@@ -1,8 +1,21 @@
 import React from 'react';
 import axios from 'axios';
 import './App.css';
+import PageOne from '../PageOne/PageOne'
+import { useState } from  'react';
+
 
 function App() {
+
+
+
+
+
+
+
+
+
+
 
   return (
     <div className='App'>
@@ -10,8 +23,18 @@ function App() {
         <h1 className='App-title'>Feedback!</h1>
         <h4>Don't forget it!</h4>
       </header>
+      <div>
+        <PageOne />
+      </div>
     </div>
   );
 }
+
+
+
+
+
+
+
 
 export default App;
