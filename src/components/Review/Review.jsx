@@ -37,10 +37,10 @@ const handleSubmit = (event) => {
    return(
     <>
           <h3>Please review your answers before final submission</h3>
-        <h4>You entered feelings as:{feelings}</h4>
+        {/* <h4>You entered feelings as:{feelings}</h4>
         <h4>You entered understanding as:{understanding}</h4>
         <h4>You entered supported as:{supported}</h4>
-        <h4>You entered comments as:{comments}</h4>
+        <h4>You entered comments as:{comments}</h4> */}
         <div>
         <button type="submit" onClick={handleSubmit}>Submit</button>
         </div>

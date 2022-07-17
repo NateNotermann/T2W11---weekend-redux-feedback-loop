@@ -16,7 +16,7 @@ function Comments (){
      // ----- CLICK FUNCTION ----- //
     const handleClick = () => {
         event.preventDefault();
-        dispatch({type: 'SET_COMMENTS'})
+        // dispatch({type: 'SET_COMMENTS'})
         console.log('in handleSubmit (understanding.jsx)', comments)
         alert('Going to Review!');
         history.push('/review')
