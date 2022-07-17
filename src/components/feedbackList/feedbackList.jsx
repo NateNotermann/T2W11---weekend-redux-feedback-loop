@@ -1,15 +1,15 @@
 
 import { useSelector } from 'react-redux';
 
-function feedbackList() {
-    const feedbackList = useSelector(store => store.currentFeedback);
-
+function FeedbackList() {
+    const feedbackList = useSelector(store => store.feedbackList);
+    console.log('FeedbackList STORE is:', feedbackList );
     return (
         <>
         <section>
             <h2>All Feedback</h2>
             <ul>
-                {currentFeedback.map((feedback, index) =>
+                {feedbackList.map((feedback, index) =>
                 <li key={index}>{feedback}text</li>
                 )}
             </ul>
@@ -18,4 +18,4 @@ function feedbackList() {
     );
 }
 
-export default feedbackList;
+export default FeedbackList;
