@@ -14,7 +14,10 @@ function StartFeedback (){
     }
 
     return(
+        <div>
+        <h3>Hello! Please take a moment to let us know how you are doing this week</h3>
         <button onClick={handleClick}>Start Feedback!</button>
+        </div>
     )
 }
 

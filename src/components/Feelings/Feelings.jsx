@@ -34,7 +34,8 @@ function Feelings () {
         min="1" max="5" maxLength="1"
         placeholder="1 - 5"
             value={feelings} 
-            onChange={(event) => setFeelings(event.target.value)}></input>
+            onChange={(event) => setFeelings(event.target.value)}>
+            </input>
             <button type="submit">Submit Feelings</button>
         </form>
         

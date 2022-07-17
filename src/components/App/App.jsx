@@ -34,6 +34,10 @@ function App() {
   // ----- REDUX-STORE ------ // 
   const reduxStore = useSelector(store => store);
   const feelings = useSelector(store => store.feelings);
+  const understanding = useSelector(store => store.understanding);
+  const supported = useSelector(store => store.supported);
+  const comments = useSelector(store => store.comments);
+
 
 // ---- Fetch's the FEEDBACK from DB  using AXIOS GET ---- //
 const fetchFeedback = () => {
@@ -75,11 +79,11 @@ useEffect(() => {
           </Route>
 
           <Route path="/supported" exact>
-            {/* <Supported /> */}
+            <Supported />
           </Route>
 
           <Route path="/comments" exact>
-            {/* <Comments /> */}
+            <Comments />
           </Route>
 
           <Route path="/review" exact>
