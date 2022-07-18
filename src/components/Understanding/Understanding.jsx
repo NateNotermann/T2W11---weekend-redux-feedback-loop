@@ -26,8 +26,8 @@ function Understanding (){
             payload: understanding,
          })
         console.log('in handleSubmit (understanding.jsx)', understanding)
-        alert('Going to Supported!');
-        history.push('/supported')
+        // alert('Going to support!');
+        history.push('/support')
         }
     }
 
@@ -37,7 +37,7 @@ function Understanding (){
             type:'SET_UNDERSTANDING',
             payload: understanding,
          })
-        alert('Back to Feelings!');
+        // alert('Back to Feelings!');
         history.push('/feelings')
     }
 
@@ -54,7 +54,7 @@ function Understanding (){
             value={understanding}
             onChange={(event) => setUnderstanding(event.target.value)}>
             </input>
-            <button type="submit">Submit Understanding and go to Supported</button>
+            <button type="submit">Submit Understanding and go to support</button>
         </form>
 
         <form onSubmit={handleClickBack}>

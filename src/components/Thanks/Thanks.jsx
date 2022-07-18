@@ -13,7 +13,7 @@ function Thanks (){
      // ----- CLICK FUNCTION ----- //
     const handleClick = () => {
         event.preventDefault();
-        alert('Starting new Feedback!');
+        // alert('Starting new Feedback!');
         history.push('/')
         }
     

@@ -5,26 +5,26 @@ import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
  // ----- UNDERSTANDING PAGE ----- //
-function Supported (){
+function Support (){
 
     const history = useHistory();
     const dispatch = useDispatch();
 
 // ----- UNDERSTANDING USE-STATE ----- //  
-    const [supported, setSupported] = useState('');
+    const [support, setSupport] = useState('');
 
      // ----- CLICK FUNCTION ----- //
     const handleClick = () => {
         event.preventDefault();
-        if(document.getElementById("supported").value  === '') {
+        if(document.getElementById("support").value  === '') {
             alert("You didn't enter anything!")
         }
         else {
         dispatch({
-            type:'SET_SUPPORTED',
-            payload: supported,
+            type:'SET_SUPPORT',
+            payload: support,
          })
-         alert('Going to Comments!');
+        //  alert('Going to Comments!');
          history.push('/comments')
          }
         }
@@ -34,28 +34,28 @@ function Supported (){
     const handleClickBack = () => {
         event.preventDefault();
         dispatch({
-            type: 'SET_SUPPORTED',
-            payload: supported,
+            type: 'SET_SUPPORT',
+            payload: support,
         })
-        console.log('in handleSubmit (supported.jsx)', supported)
-        alert('Back to Understanding!');
+        console.log('in handleSubmit (support.jsx)', support)
+        // alert('Back to Understanding!');
         history.push('/understanding')
     }
 
     return(
         <>
         <div>
-        <h3>Please how much you were Supported this week, from 1 to 5.</h3>
-        <h4>You entered:{supported}</h4>
+        <h3>Please how much you were support this week, from 1 to 5.</h3>
+        <h4>You entered:{support}</h4>
         <form onSubmit={handleClick}>
         <input type="number"
-        id="supported"
+        id="support"
         min="1" max="5" maxLength="1"
         placeholder="1 - 5"
-            value={supported}
-            onChange={(event) => setSupported(event.target.value)}>
+            value={support}
+            onChange={(event) => setSupport(event.target.value)}>
             </input>
-            <button type="submit">Submit Supported and go to Comments</button>
+            <button type="submit">Submit support and go to Comments</button>
         </form>
         <form onSubmit={handleClickBack}>
             <button type="submit" id="back">Go back to Understanding</button>
@@ -65,4 +65,4 @@ function Supported (){
     )
 }
 
-export default Supported;
+export default Support;

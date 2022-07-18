@@ -12,12 +12,12 @@ import './App.css';
 import StartFeedback from '../StartFeedback/StartFeedback';
 import Feelings from '../Feelings/Feelings';
 import Understanding from '../Understanding/Understanding';
-import Supported from '../Supported/Supported';
+import Support from '../Support/Support';
 import Comments from '../Comments/Comments';
 import Thanks from '../Thanks/Thanks';
 
 import Review from '../Review/Review';
-import FeedbackList from '../feedbackList/feedbackList';
+import FeedbackList from '../FeedbackList/FeedbackList';
 
 // import { response } from 'express';
 // id; 1, feeling: 2, understanding: 3, support: 4,
@@ -44,8 +44,11 @@ function App() {
 const fetchFeedback = () => {
   axios.get('/feedback')
   .then(response =>  {
-    dispatch({type:'SET_FEEDBACK_LIST',
-  payload: response.data })
+    dispatch({
+      type:'GET_FEEDBACK_LIST',
+      payload: response.data 
+    })
+    console.log('response.data:', response);
   })
   .catch(error => {
     console.log('Error in Fetching Feedback(app.jsx)', error)
@@ -79,8 +82,8 @@ useEffect(() => {
             <Understanding />
           </Route>
 
-          <Route path="/supported" exact>
-            <Supported />
+          <Route path="/support" exact>
+            <Support />
           </Route>
 
           <Route path="/comments" exact>
@@ -102,7 +105,7 @@ useEffect(() => {
           <pre>comments Store = {comments}</pre>
    */}
 
-          {/* <FeedbackList /> // -- STRETCH GOAL --- // */}
+          <FeedbackList /> 
         </div>
       </div>
     </Router>

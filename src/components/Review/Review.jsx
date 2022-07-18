@@ -4,19 +4,25 @@ import { useState } from  'react';
 import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux'
+import axios from 'axios';
+import FeedbackList from '../FeedbackList/FeedbackList'
+
 function Review (){
     
-
-
- console.log('Your feedback is:',feelings, understanding, supported, comments)
+//  console.log('Your feedback is:',feelings, understanding, support, comments)
   // ----- REDUX-STORE ------ // 
 const feelings = useSelector(store => store.feelings);
 const understanding = useSelector(store => store.understanding);
-const supported = useSelector(store => store.supported);
+const support = useSelector(store => store.support);
 const comments = useSelector(store => store.comments);
 // const review = useSelector(store => store.review);
 
-console.log('Your feedback is:',feelings, understanding, supported, comments)
+
+
+
+// console.log(currentDate);
+
+// console.log('Your feedback is:',feelings, understanding, support, comments)
 // ----- REVIEW USE-STATE ----- //
 // const [reviewFeedback, setReviewFeedback] = useState ('');
 
@@ -25,11 +31,13 @@ console.log('Your feedback is:',feelings, understanding, supported, comments)
 const history = useHistory();
 const dispatch = useDispatch();
 
-const handleSubmit = (event) => {
+const handleSubmit = () => {
     event.preventDefault();
-    // console.log('Your feedback is:',feelings, understanding, supported, comments)
-    alert('Thanks for submitting you Feedback!');
-    history.push('/thanks')
+    console.log('Your feedback is:',feelings, understanding, support, comments)
+    postFeedback();
+    // alert('Thanks for submitting you Feedback!');
+    // history.push('/thanks')
+    
 }
 
 const handleSubmitFeelings= () => {
@@ -44,7 +52,7 @@ const handleSubmitUnderstanding= () => {
 
 const handleSubmitSupport = () => {
     event.preventDefault();
-    history.push('/supported')
+    history.push('/support')
 }
 
 const handleSubmitComments = () => {
@@ -57,16 +65,23 @@ const handleSubmitRestart = () => {
 }
 
 // ---- POST ---- //     
-//     // ---- axios POST ---- //  ----- TURN ON LATER ------
-// const postFeedback = (event) => {
-//     axios.post('/feedback', {review})
-//     .then(response => {
-//     })
-//     .catch(error => {
-//         console.log('Error POSTING (Review.jsx)');
-//         alert('Server error');
-//     })
-//    };
+    // ---- axios POST ---- //  ----- TURN ON LATER ------
+const postFeedback = () => {
+    axios.post('/feedback', {
+        feelings: feelings,
+        understanding:  understanding,
+        support: support,
+        comments: comments,
+    })
+    .then(response => {
+        FeedbackList();
+        console.log('response is:', response);
+    })
+    .catch(error => {
+        console.log('Error POSTING (Review.jsx)');
+        alert('Server error');
+    })
+   };
    
 
    // ---- Return/Render to DOM - Review page ---- //
@@ -75,7 +90,7 @@ const handleSubmitRestart = () => {
           <h3>Please review your answers before final submission</h3>
         {/* <h4>You entered feelings as:{feelings}</h4>
         <h4>You entered understanding as:{understanding}</h4>
-        <h4>You entered supported as:{supported}</h4>
+        <h4>You entered support as:{support}</h4>
         <h4>You entered comments as:{comments}</h4> */}
         <div>
         <pre>You entered Feelings as: {feelings}<span>
@@ -86,9 +101,9 @@ const handleSubmitRestart = () => {
             <form onSubmit={handleSubmitUnderstanding}> 
                 <button type="submit">Edit Understanding</button>
                 </form></span></pre>
-        <pre>You entered Supported as: {supported}<span>
+        <pre>You entered support as: {support}<span>
             <form onSubmit={handleSubmitSupport}> 
-                <button type="submit">Edit Supported</button>
+                <button type="submit">Edit support</button>
                 </form></span></pre>
         <pre>You entered Comments as: {comments}<span>
             <form onSubmit={handleSubmitComments}> 

@@ -9,7 +9,7 @@ function StartFeedback (){
     const dispatch = useDispatch();
 
     const handleClick = () => {
-        alert('Starting Feedback!');
+        // alert('Starting Feedback!');
         history.push('/feelings')
     }
 

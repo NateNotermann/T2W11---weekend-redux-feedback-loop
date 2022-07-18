@@ -26,7 +26,7 @@ function Comments (){
             payload: comments,
          })
         console.log('in handleSubmit (comments.jsx)', comments)
-        alert('Going to Review!');
+        // alert('Going to Review!');
         history.push('/review')
         }
     }

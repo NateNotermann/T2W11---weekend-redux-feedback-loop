@@ -8,19 +8,18 @@ import App from './components/App/App';
 import { Provider } from 'react-redux'; 
 
 // ------ BELOW -  THIS whole thing a a REDUCER -  holding a STATE ------
-// const feedbackList = ( state = [], action) => {
-//     switch (action.type){
-//         case 'SET_FEEDBACK_LIST' :
-//     return action.payload;
-//     default:
-//         return state;
-//     }
-// }
+const feedbackList = ( state = [], action) => {
+    switch (action.type){
+        case 'GET_FEEDBACK_LIST' :
+    return action.payload;
+    default:
+        return state;
+    }
+}
 
 
 // ---- FEELINGS -- PAGE-ONE ---- //
 const feelings = ( state = [], action) => {
-    console.log('feelings reducer', action);
     switch (action.type){
         case 'SET_FEELINGS' :
     return action.payload;
@@ -31,7 +30,6 @@ const feelings = ( state = [], action) => {
 
 // ---- FEELINGS -- PAGE-ONE ---- //
 const understanding = ( state = [], action) => {
-    console.log('understanding reducer', action);
     switch (action.type){
         case 'SET_UNDERSTANDING' :
     return action.payload;
@@ -40,9 +38,9 @@ const understanding = ( state = [], action) => {
     }
 }
 
-const supported = ( state = [], action) => {
+const support = ( state = [], action) => {
     switch (action.type){
-        case 'SET_SUPPORTED' :
+        case 'SET_SUPPORT' :
     return action.payload;
     default:
         return state;
@@ -73,10 +71,10 @@ const review = ( state = [], action) => {
 // ------ BELOW - THIS is where you STORE the REDUX STATE'S values ------
 const reduxStore = createStore(
     combineReducers({
-        // feedbackList, // -- STRETCH GOAL --- //
+        feedbackList, // -- STRETCH GOAL --- //
         feelings,
         understanding,
-        supported,
+        support,
         comments,
         // review,
     }),
@@ -106,8 +104,8 @@ registerServiceWorker();
   // 'SET_FEELINGS
 // - /feedback/understanding
   // - 'SET_UNDERSTANDING'
-// - /feedback/supported
-// - 'SET_SUPPORTED'
+// - /feedback/support
+// - 'SET_support'
 // - /feedback/comments
 // - 'SET_COMMENTS'
 // - /feedback/review

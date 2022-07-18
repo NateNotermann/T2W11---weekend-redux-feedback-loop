@@ -26,7 +26,7 @@ function Feelings () {
         payload: feelings,
      })
      console.log('in handleSubmit (Feelings.jsx)', feelings)
-     alert('Going to understanding!');
+    //  alert('Going to understanding!');
      history.push('/understanding')
     }
     }
