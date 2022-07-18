@@ -14,6 +14,7 @@ import Feelings from '../Feelings/Feelings';
 import Understanding from '../Understanding/Understanding';
 import Supported from '../Supported/Supported';
 import Comments from '../Comments/Comments';
+import Thanks from '../Thanks/Thanks';
 
 import Review from '../Review/Review';
 import FeedbackList from '../feedbackList/feedbackList';
@@ -32,11 +33,11 @@ function App() {
   const history = useHistory();    
 
   // ----- REDUX-STORE ------ // 
-  const reduxStore = useSelector(store => store);
-  const feelings = useSelector(store => store.feelings);
-  const understanding = useSelector(store => store.understanding);
-  const supported = useSelector(store => store.supported);
-  const comments = useSelector(store => store.comments);
+  // const reduxStore = useSelector(store => store);
+  // const feelings = useSelector(store => store.feelings);
+  // const understanding = useSelector(store => store.understanding);
+  // const supported = useSelector(store => store.supported);
+  // const comments = useSelector(store => store.comments);
 
 
 // ---- Fetch's the FEEDBACK from DB  using AXIOS GET ---- //
@@ -90,8 +91,17 @@ useEffect(() => {
             <Review fetchFeedback={fetchFeedback}/>
           </Route>
 
-          <pre>whole reduxStore = {JSON.stringify(reduxStore)}</pre>
-          <pre>Feelings Store = {feelings}</pre>
+          <Route path="/thanks" exact>
+            <Thanks />
+          </Route>
+
+          {/* <pre>whole reduxStore = {JSON.stringify(reduxStore)}</pre> */}
+          {/* <pre>Feelings Store = {feelings}</pre>
+          <pre>understanding Store = {understanding}</pre>
+          <pre>supported Store = {supported}</pre>
+          <pre>comments Store = {comments}</pre>
+   */}
+
           {/* <FeedbackList /> // -- STRETCH GOAL --- // */}
         </div>
       </div>
@@ -99,20 +109,11 @@ useEffect(() => {
   );
 }
 
-
-
-
-
-
-
-
 export default App;
-
 
 // GET in app
   // ROUTER.GET
   // ROUTER.POST
-
 
 // - /feedback/feelings
   // 'SET_FEELINGS

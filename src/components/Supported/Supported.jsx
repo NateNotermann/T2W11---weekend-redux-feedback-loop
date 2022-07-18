@@ -16,9 +16,30 @@ function Supported (){
      // ----- CLICK FUNCTION ----- //
     const handleClick = () => {
         event.preventDefault();
-        console.log('in handleSubmit (understanding.jsx)', supported)
-        alert('Going to Comments!');
-        history.push('/comments')
+        if(document.getElementById("supported").value  === '') {
+            alert("You didn't enter anything!")
+        }
+        else {
+        dispatch({
+            type:'SET_SUPPORTED',
+            payload: supported,
+         })
+         alert('Going to Comments!');
+         history.push('/comments')
+         }
+        }
+       
+
+
+    const handleClickBack = () => {
+        event.preventDefault();
+        dispatch({
+            type: 'SET_SUPPORTED',
+            payload: supported,
+        })
+        console.log('in handleSubmit (supported.jsx)', supported)
+        alert('Back to Understanding!');
+        history.push('/understanding')
     }
 
     return(
@@ -35,6 +56,9 @@ function Supported (){
             onChange={(event) => setSupported(event.target.value)}>
             </input>
             <button type="submit">Submit Supported and go to Comments</button>
+        </form>
+        <form onSubmit={handleClickBack}>
+            <button type="submit" id="back">Go back to Understanding</button>
         </form>
         </div>
         </>

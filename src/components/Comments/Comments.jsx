@@ -16,16 +16,37 @@ function Comments (){
      // ----- CLICK FUNCTION ----- //
     const handleClick = () => {
         event.preventDefault();
-        // dispatch({type: 'SET_COMMENTS'})
-        console.log('in handleSubmit (understanding.jsx)', comments)
+        if(document.getElementById("comments").value  === '')
+        {
+            alert("You didn't enter anything!")
+        }
+        else {
+        dispatch({
+            type:'SET_COMMENTS',
+            payload: comments,
+         })
+        console.log('in handleSubmit (comments.jsx)', comments)
         alert('Going to Review!');
         history.push('/review')
+        }
+    }
+    
+    const handleClickBack = () => {
+        event.preventDefault();
+        dispatch({
+            type: 'SET_COMMENTS',
+            payload: comments,
+        })
+        console.log('in handleSubmit (comments.jsx)', comments)
+        alert('Back to Supported!');
+        history.push('/supported')
+    
     }
 
     return(
         <>
         <div>
-        <h3>Please how much you were Supported this week, from 1 to 5.</h3>
+        <h3>Please let us know if you have any additional comments</h3>
         <h4>You entered:{comments}</h4>
         <form onSubmit={handleClick}>
         <input type="text"
@@ -35,6 +56,10 @@ function Comments (){
             onChange={(event) => setComments(event.target.value)}>
             </input>
             <button type="submit">Submit Comments and go to final feedback Review</button>
+        </form>
+        <form onSubmit={handleClickBack}>
+            <button type="submit">Go back to Supported</button>
+
         </form>
         </div>
         </>

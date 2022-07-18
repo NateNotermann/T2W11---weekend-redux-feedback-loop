@@ -20,6 +20,7 @@ import { Provider } from 'react-redux';
 
 // ---- FEELINGS -- PAGE-ONE ---- //
 const feelings = ( state = [], action) => {
+    console.log('feelings reducer', action);
     switch (action.type){
         case 'SET_FEELINGS' :
     return action.payload;
@@ -30,6 +31,7 @@ const feelings = ( state = [], action) => {
 
 // ---- FEELINGS -- PAGE-ONE ---- //
 const understanding = ( state = [], action) => {
+    console.log('understanding reducer', action);
     switch (action.type){
         case 'SET_UNDERSTANDING' :
     return action.payload;
@@ -76,7 +78,7 @@ const reduxStore = createStore(
         understanding,
         supported,
         comments,
-        review,
+        // review,
     }),
     applyMiddleware(logger)
 );

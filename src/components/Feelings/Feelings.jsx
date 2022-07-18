@@ -16,9 +16,19 @@ function Feelings () {
  // ----- CLICK FUNCTION ----- //
  const handleSubmit = (event) => {
      event.preventDefault();
+     if(document.getElementById("feelings").value  === '')
+     {
+         alert("You didn't enter anything!")
+     }
+     else {
+     dispatch({
+        type:'SET_FEELINGS',
+        payload: feelings,
+     })
      console.log('in handleSubmit (Feelings.jsx)', feelings)
      alert('Going to understanding!');
      history.push('/understanding')
+    }
     }
 
 

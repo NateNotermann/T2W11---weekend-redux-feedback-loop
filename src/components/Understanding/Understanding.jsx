@@ -16,9 +16,29 @@ function Understanding (){
      // ----- CLICK FUNCTION ----- //
     const handleClick = () => {
         event.preventDefault();
+        if(document.getElementById("understanding").value  === '')
+        {
+            alert("You didn't enter anything!")
+        }
+        else {
+        dispatch({
+            type:'SET_UNDERSTANDING',
+            payload: understanding,
+         })
         console.log('in handleSubmit (understanding.jsx)', understanding)
         alert('Going to Supported!');
         history.push('/supported')
+        }
+    }
+
+    const handleClickBack = () => {
+        event.preventDefault();
+        dispatch({
+            type:'SET_UNDERSTANDING',
+            payload: understanding,
+         })
+        alert('Back to Feelings!');
+        history.push('/feelings')
     }
 
     return(
@@ -35,6 +55,10 @@ function Understanding (){
             onChange={(event) => setUnderstanding(event.target.value)}>
             </input>
             <button type="submit">Submit Understanding and go to Supported</button>
+        </form>
+
+        <form onSubmit={handleClickBack}>
+            <button type="submit">Go back to Feelings</button>
         </form>
         </div>
         </>
