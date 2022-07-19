@@ -5,13 +5,13 @@ import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux'
 import axios from 'axios';
-import FeedbackList from '../FeedbackList/FeedbackList'
+import FeedbackList from '../FeedbackList/FeedbackList';
 
-function Review (){
+function Review ({fetchFeedback}){
     
 //  console.log('Your feedback is:',feelings, understanding, support, comments)
   // ----- REDUX-STORE ------ // 
-const feelings = useSelector(store => store.feelings);
+const feeling = useSelector(store => store.feelings);
 const understanding = useSelector(store => store.understanding);
 const support = useSelector(store => store.support);
 const comments = useSelector(store => store.comments);
@@ -33,10 +33,10 @@ const dispatch = useDispatch();
 
 const handleSubmit = () => {
     event.preventDefault();
-    console.log('Your feedback is:',feelings, understanding, support, comments)
+    console.log('Your feedback is:',feeling, understanding, support, comments)
     postFeedback();
-    // alert('Thanks for submitting you Feedback!');
-    // history.push('/thanks')
+    alert('Thanks for submitting you Feedback!');
+    history.push('/thanks')
     
 }
 
@@ -68,17 +68,19 @@ const handleSubmitRestart = () => {
     // ---- axios POST ---- //  ----- TURN ON LATER ------
 const postFeedback = () => {
     axios.post('/feedback', {
-        feelings: feelings,
-        understanding:  understanding,
-        support: support,
-        comments: comments,
+        feeling,
+        understanding,
+        support,
+        comments,
     })
     .then(response => {
-        FeedbackList();
+        // FeedbackList(); -- 
+            // -- cant call component function outside of the return
+        fetchFeedback(); // calling a server request function
         console.log('response is:', response);
     })
     .catch(error => {
-        console.log('Error POSTING (Review.jsx)');
+        console.log('Error POSTING (Review.jsx)', error);
         alert('Server error');
     })
    };
@@ -93,7 +95,7 @@ const postFeedback = () => {
         <h4>You entered support as:{support}</h4>
         <h4>You entered comments as:{comments}</h4> */}
         <div>
-        <pre>You entered Feelings as: {feelings}<span>
+        <pre>You entered Feelings as: {feeling}<span>
             <form onSubmit={handleSubmitFeelings}> 
                 <button type="submit">Edit Feelings</button>
                 </form></span></pre>
@@ -114,6 +116,7 @@ const postFeedback = () => {
         <form onSubmit={handleSubmitRestart}> 
                 <button type="submit">Restart Feedback</button>
         </form>
+        <FeedbackList /> 
         </div>
     </>
 )

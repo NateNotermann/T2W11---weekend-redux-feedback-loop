@@ -105,7 +105,7 @@ useEffect(() => {
           <pre>comments Store = {comments}</pre>
    */}
 
-          <FeedbackList /> 
+          {/* <FeedbackList />  */}
         </div>
       </div>
     </Router>
